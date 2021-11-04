@@ -1,4 +1,4 @@
-version: "1.0"
+version: "3"
 services:
     app:
         build:
@@ -8,6 +8,7 @@ services:
             context: ./
             dockerfile: DockerFile
         image: laravel-with-docker
+        container_name: app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
@@ -17,19 +18,27 @@ services:
 
     nginx:
         image: nginx:alpine
+        container_name: nginx
         restart: unless-stopped
         ports:
             - 8000:80
         volumes:
             - ./:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d/
+        depends_on:
+            - app
+            - db
         networks:
             - laravel-docker
     db:
         image: mysql:8
+        container_name: db
         restart: unless-stopped
+        tty: true
         ports:
             - 3306:3306
+        volumes:
+            - ./:/var/www
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
