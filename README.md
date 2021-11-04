@@ -5,10 +5,14 @@
 -   Nginx
 -   MySQL
 
-## Running environtment
+## Running environtent
 
 -   `docker compose up`
 
 ## Using command
 
 -   `docker-compose exec app {your command}`
+
+## Stop environment
+
+-   `docker compose down`
