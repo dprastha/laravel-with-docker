@@ -2,8 +2,9 @@
 
 ## Image
 
--   Nginx
--   MySQL
+-   PHP:7.4-fpm
+-   Nginx:alpine
+-   MySQL:8
 
 ## Running environtent
 
