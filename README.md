@@ -6,7 +6,7 @@
 -   Nginx:alpine
 -   MySQL:8
 
-## Running environtent
+## Running environment
 
 -   `docker compose up`
 
